@@ -18,5 +18,5 @@ Poderá ser consultado os métodos via swagger neste endereço: (https://localho
 # A Aplicação consome uma API Restful via Axios
 # O design foi feito usando o framework Material-UI
 
-## TODO Segregar as ações usando Redux e validar as informaçães antes de enviar para a API
+##: TODO Segregar as ações usando Redux e validar as informaçães antes de enviar para a API
 
