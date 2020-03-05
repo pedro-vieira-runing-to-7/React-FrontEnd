@@ -39,15 +39,13 @@ export default function SimpleCard() {
         </Typography>
 
         <Typography className={classes.pos} color="textSecondary">
-        Esta  aplicação de depende de estar rodando API neste endereço: "https://localhost:5001", a qual utiliza EF Core in memory ( Apenas para testes), portanto os dados só serão mantidos durante o ciclo de vida da aplicação.
+        Esta  aplicação de depende de estar rodando a API neste endereço: "https://localhost:5001", a qual utiliza EF Core in memory ( Apenas para testes), portanto os dados só serão mantidos durante o ciclo de vida da aplicação.
         <br/>Poderá ser consultado os métodos via swagger neste endereço: (https://localhost:5001/swagger/index.html)
         </Typography>
 
         <Typography variant="h5" component="h2">
-         A dependência acima, diz respeito aplicação a Sage_BackEnd
+         A dependência acima, diz respeito a aplicação Sage_BackEnd
         </Typography>
-
-
       
       </CardContent>
      

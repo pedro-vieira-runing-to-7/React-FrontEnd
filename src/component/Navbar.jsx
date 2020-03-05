@@ -7,12 +7,15 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Button from '@material-ui/core/Button';
 
 const style = {
-    flexGrow: 1
+    flexGrow: 1,
+    backgroundColor: '#4caf50',
 }
+
+
 const NavBar = () => {
     return (
         <div>
-            <AppBar position="static">
+            <AppBar style={style} position="static">
                 <Toolbar>
                     <IconButton edge="start" color="inherit" aria-label="Menu">
                         <MenuIcon />
