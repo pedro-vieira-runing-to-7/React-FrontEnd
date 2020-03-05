@@ -9,7 +9,7 @@ Esta aplicação rodará no seguinte endereço: (http://localhost:3000) e depend
 portanto os dados só serão mantidos durante o ciclo de vida da aplicação.
 Poderá ser consultado os métodos via swagger neste endereço: (https://localhost:5001/swagger/index.html)
 
-##A dependência acima, diz respeito aplicação a Sage_BackEnd
+## A dependência acima, diz respeito aplicação a Sage_BackEnd
 
 
 ## Tecnologias
@@ -17,5 +17,5 @@ A Aplicação foi desenvolvida em REACT JS
 A Aplicação consome uma API Restful via Axios
 O design foi feito usando o framework Material-UI
 
-#TODO Segregar as ações usando Redux e validar as informaçães antes de enviar para a API
+## TODO Segregar as ações usando Redux e validar as informaçães antes de enviar para a API
 
