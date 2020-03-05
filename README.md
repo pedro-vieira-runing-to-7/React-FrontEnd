@@ -6,20 +6,16 @@ Cadastro, edição, exclusão e atualização de um cadastro de pessoa com ender
 ## Observações sobre a aplicação:
 Todas as depenências são instaladas pelo comando npm install, porém sugiro que use yarn install.
 
-Esta aplicação rodará no seguinte endereço: (http://localhost:3000) e depende de estar rodando API neste endereço: 
+Esta aplicação rodará no seguinte endereço: (http://localhost:3000) e depende de estar rodando a API neste endereço: 
 "https://localhost:5001", a qual utiliza EF Core in memory ( Apenas para testes),
 portanto os dados só serão mantidos durante o ciclo de vida da aplicação.
 Poderá ser consultado os métodos via swagger neste endereço: (https://localhost:5001/swagger/index.html)
 
-## A dependência acima, diz respeito aplicação a Sage_BackEnd
+## A dependência acima, diz respeito a aplicação a Sage_BackEnd
 
 ## Tecnologias:
 ### REACT JS
 ### A Aplicação consome uma API Restful via Axios
 ### O design foi feito usando o framework Material-UI
 
-<<<<<<< HEAD
 ## TODO: Segregar as ações usando Redux e validar as informaçães antes de enviar para a API
-=======
-## TODO: Segregar as ações usando Redux e validar as informaçães antes de enviar para a API
->>>>>>> 8b1a737b928718ca472bdba3a5f1b7110a66c5ec
