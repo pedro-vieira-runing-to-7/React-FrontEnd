@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -12,7 +12,21 @@ const style = {
 }
 
 
-const NavBar = () => {
+export class NavBar extends Component {
+
+
+    constructor(props){
+        super(props);
+       // this.state ={}
+    }
+    
+addPessoa() {
+    window.localStorage.setItem("acaoForm", 0);
+    window.localStorage.removeItem("pessoaId");
+    window.location.href = '/cadastra-pessoa';
+}
+
+    render() {
     return (
         <div>
             <AppBar style={style} position="static">
@@ -26,7 +40,7 @@ const NavBar = () => {
                       
                     <Button variant="text" color="inherit" formNoValidate  onClick={eve => window.location.href='/consulta-pessoas'}> Consulta  </Button>
                     &nbsp;&nbsp;&nbsp;
-                    <Button variant="text" color="inherit" formNoValidate  onClick={eve => window.location.href='/cadastra-pessoa'}> Novo Cadastro  </Button>
+                    <Button variant="text" color="inherit" formNoValidate  onClick={() => this.addPessoa()}> Novo Cadastro  </Button>
                     &nbsp;&nbsp;&nbsp;
                     <Button variant="text" color="inherit" formNoValidate  onClick={eve => window.location.href='/'}> Home </Button>
                 </Toolbar>
@@ -34,6 +48,8 @@ const NavBar = () => {
         </div>
     )
 }
+}
 
 export default NavBar;
+
 

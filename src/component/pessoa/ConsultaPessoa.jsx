@@ -19,7 +19,6 @@ class ListPessoaComponent extends Component {
         }
         this.deletePessoa = this.deletePessoa.bind(this);
         this.editPessoa = this.editPessoa.bind(this);
-        this.addPessoa = this.addPessoa.bind(this);
         this.reloadPessoaList = this.reloadPessoaList.bind(this);
     }
 
@@ -47,17 +46,13 @@ class ListPessoaComponent extends Component {
                this.setState({pessoas: this.state.pessoas.filter(pessoa => <pessoa className="pessoaId"></pessoa> !== id)});
            })
 
-           this.props.history.push('/consulta-pessoas');
+           window.location.href = '/consulta-pessoas';
     }
 
-    editPessoa(Id) {
+    editPessoa(Id) {        
+        window.localStorage.setItem("acaoForm", 1);
         window.localStorage.setItem("pessoaId", Id);
-        this.props.history.push('/edita-pessoa');
-    }
-
-    addPessoa() {
-        window.localStorage.removeItem("pessoaId");
-        this.props.history.push('/cadastra-pessoa');
+        this.props.history.push('/edicao-pessoa');
     }
 
     render() {
