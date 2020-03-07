@@ -23,12 +23,6 @@ class ListPessoaComponent extends Component {
     }
 
     componentDidMount() {
-        let estados = [ {Sigla: 'SP', Nome: 'São Paulo'}, 
-        {Sigla: 'PR', Nome: 'Paraná'}, 
-        {Sigla: 'RJ', Nome: 'Rio de Janeiro'},
-        {Sigla: 'SC', Nome: 'Santa Catarina'}];
-        ApiService.addEstados(estados);
-
         this.reloadPessoaList();
     }
 

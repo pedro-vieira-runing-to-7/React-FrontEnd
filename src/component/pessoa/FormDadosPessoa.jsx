@@ -30,6 +30,18 @@ class PessoaComponent extends Component{
             tipoPessoa: '',
             lstStatus: [],
             lstTipoPessoa: [],
+            /*Id: '',
+            IdStatus: 0,
+            IdTipoPessoa: 0,
+            Nome: '',
+            NomeSocial: '',
+            CpfCnpj: '',
+            RgIe: '',
+            DataNascimentoAbertura: "2020-03-02",
+            Sexo: '',
+            Email: '',
+            NumeroTelefoneFixo: '',
+            NumeroCelular: ''*/
         }
     }
 
@@ -65,7 +77,7 @@ class PessoaComponent extends Component{
     const pessoaId = window.localStorage.getItem("pessoaId");
 
     // se for ação de alteração 
-    if (pessoaId != '' && acaoForm === '1')
+    if (pessoaId !== '' && acaoForm === '1')
     {
     ApiService.fetchPessoaById(pessoaId)
         .then((res) => {
@@ -90,7 +102,7 @@ class PessoaComponent extends Component{
 
     render() {
 
-      const { values, handleChange } = this.props;
+      const { values, handleChange  } = this.props;
 
         return(
           <React.Fragment>
@@ -99,66 +111,20 @@ class PessoaComponent extends Component{
           </Typography>
           <Grid container spacing={50}>
                 <form style={formContainer} >
-
-                <Grid item xs={12} sm={3}>
-                    <TextField  fullWidth    margin="normal" 
-                        id="IdStatus"
-                        name="IdStatus"
-                        select
-                        label="Status"
-                        value={this.state.IdStatus} 
-                        onChange={handleChange('IdStatus')}
-                        defaultValue={values.IdStatus}
-                        >
-                        {this.state.lstStatus.map(dado => (
-                                        <MenuItem  key={dado.value} value={dado.value}> {dado.display}</MenuItem>
-                                        ))}
-                    </TextField>
+               
+                    <Grid   item xs={12} sm={3}>
+                    <TextField type="text" placeholder="Nome" fullWidth label="Nome"   margin="normal" name="Nome" value={this.state.Nome}  onChange={handleChange('Nome')} defaultValue={values.Nome}/>
                     </Grid>
-                    <Grid item xs={12} sm={3}>
-                    <TextField fullWidth    margin="normal" 
-                        id="IdTipoPessoa"
-                        name="IdTipoPessoa"
-                        select
-                        label="Tipo Pessoa"
-                        value={this.state.IdTipoPessoa} 
-                        onChange={handleChange('IdTipoPessoa')}
-                        defaultValue={values.IdTipoPessoa}
-                        >
-                        {this.state.lstTipoPessoa.map(dado => (
-                                        <MenuItem  key={dado.value} value={dado.value}> {dado.display}</MenuItem>
-                                        ))}
-                    </TextField>
+                    <Grid item xs={12} sm={1}></Grid>
+                    <Grid  item xs={12} sm={3}>
+                    <TextField type="text" placeholder="Nome Social" fullWidth label="Nome Solcial"  margin="normal" name="NomeSocial" value={this.state.NomeSocial}  onChange={handleChange('NomeSocial')} defaultValue={values.NomeSocial}/>
                     </Grid>
-                    <Grid item xs={12} sm={3}>
-                    <TextField type="text" placeholder="Cpf / Cnpj" fullWidth  margin="normal" name="CpfCnpj" value={this.state.CpfCnpj} onChange={handleChange('CpfCnpj')} defaultValue={values.CpfCnpj}/>
-                    </Grid>
-                    <Grid item xs={12} sm={3}>
-                    <TextField type="text" placeholder="Rg / Ie" fullWidth   margin="normal" name="RgIe" value={this.state.RgIe} onChange={handleChange('RgIe')} defaultValue={values.RgIe}/>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                    <TextField placeholder="DataNascimentoAbertura" fullWidth  margin="normal"
-                      id="DataNascimentoAbertura"
-                      name="DataNascimentoAbertura"
-                      label="Data Nascimento/ Abertura"
-                      type="date"
-                      value={this.state.DataNascimentoAbertura}
-                      onChange={handleChange('DataNascimentoAbertura')} defaultValue={values.DataNascimentoAbertura}
-                     
-                    />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                    <TextField type="text" placeholder="Nome" fullWidth   margin="normal" name="Nome" value={this.state.Nome}  onChange={handleChange('Nome')} defaultValue={values.Nome}/>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                    <TextField type="text" placeholder="Nome Social" fullWidth  margin="normal" name="NomeSocial" value={this.state.NomeSocial}  onChange={handleChange('NomeSocial')} defaultValue={values.NomeSocial}/>
-                    </Grid>
+                    <Grid item xs={12} sm={1}></Grid>
        
-
-                    <Grid item xs={12} sm={6}>
-                    <FormControl component="fieldset" fullWidth  >
+                    <Grid item xs={12} sm={3}>
+                    <FormControl component="fieldset" fullWidth >
                       <FormLabel component="legend">Gênero</FormLabel>
-                      <RadioGroup aria-label="position"  name="Sexo" value={this.state.Sexo} onChange={handleChange('Sexo')} defaultValue={values.Sexo} row>
+                      <RadioGroup aria-label="position"   name="Sexo" value={this.state.Sexo} onChange={handleChange('Sexo')} defaultValue={values.Sexo} row>
                       
                         <FormControlLabel
                           value="M"
@@ -177,16 +143,78 @@ class PessoaComponent extends Component{
                     </FormControl>
                     </Grid>
 
-                    <Grid item xs={12} sm={4}>
-                    <TextField type="text" placeholder="E-Mail" fullWidth margin="normal" name="Email" value={this.state.Email} onChange={handleChange('Email')} defaultValue={values.Email}/>
-                    </Grid>
-                    <Grid item xs={12} sm={4}>
-                    <TextField type="text" placeholder="Fone Fixo" fullWidth margin="normal" name="NumeroTelefoneFixo" value={this.state.NumeroTelefoneFixo} onChange={handleChange('NumeroTelefoneFixo')} defaultValue={values.NumeroTelefoneFixo}/>
-                    </Grid>
-                    <Grid item xs={12} sm={4}>
-                    <TextField type="text" placeholder="Celular" fullWidth margin="normal" name="NumeroCelular" value={this.state.NumeroCelular} onChange={handleChange('NumeroCelular')} defaultValue={values.NumeroCelular}/>
+                    <Grid item xs={12} sm={2}>
+                    <TextField fullWidth  margin="normal" 
+                        id="IdTipoPessoa"
+                        name="IdTipoPessoa"
+                        select
+                        label="Tipo Pessoa"
+                        value={this.state.IdTipoPessoa} 
+                        onChange={handleChange('IdTipoPessoa')}
+                        defaultValue={values.IdTipoPessoa}
+                        >
+                        {this.state.lstTipoPessoa.map(dado => (
+                                        <MenuItem  key={dado.value} value={dado.value}> {dado.display}</MenuItem>
+                                        ))}
+                    </TextField>
                     </Grid>
 
+                    <Grid item xs={12} sm={1}></Grid>
+
+                    <Grid item xs={12} sm={2}>
+                    <TextField type="text" placeholder="Cpf / Cnpj" fullWidth label="Cpf / Cnpj"  margin="normal" name="CpfCnpj" value={this.state.CpfCnpj} onChange={handleChange('CpfCnpj')} defaultValue={values.CpfCnpj}/>
+                    </Grid>
+                    <Grid item xs={12} sm={1}></Grid>
+                    <Grid item xs={12} sm={2}>
+                    <TextField type="text" placeholder="Rg / Ie" fullWidth label="Rg / Ie"   margin="normal" name="RgIe" value={this.state.RgIe} onChange={handleChange('RgIe')} defaultValue={values.RgIe}/>
+                    </Grid>
+                    <Grid item xs={12} sm={1}></Grid>
+                    <Grid item xs={12} sm={2}>
+                    <TextField placeholder="DataNascimentoAbertura" fullWidth   margin="normal"
+                      id="DataNascimentoAbertura"
+                      name="DataNascimentoAbertura"
+                      label="Data Nascimento/ Abertura"
+                      type="date"
+                      value={this.state.DataNascimentoAbertura}
+                      onChange={handleChange('DataNascimentoAbertura')} defaultValue={values.DataNascimentoAbertura}
+                     
+                    />
+                    </Grid>
+
+                  
+                    <Grid  item xs={12} sm={2}>
+                    <TextField type="text" placeholder="Fone Fixo" fullWidth label="Fone Fixo"  margin="normal" name="NumeroTelefoneFixo" value={this.state.NumeroTelefoneFixo} onChange={handleChange('NumeroTelefoneFixo')} defaultValue={values.NumeroTelefoneFixo}/>
+                    </Grid>
+
+                    <Grid item xs={12} sm={1}></Grid>
+
+                    <Grid item xs={12} sm={2}>
+                    <TextField type="text" placeholder="Celular" fullWidth label="Celular"  margin="normal" name="NumeroCelular" value={this.state.NumeroCelular} onChange={handleChange('NumeroCelular')} defaultValue={values.NumeroCelular}/>
+                    </Grid>
+
+                    <Grid item xs={12} sm={1}></Grid>
+
+                    <Grid item xs={12} sm={2}>
+                    <TextField type="text" placeholder="E-Mail"  fullWidth margin="normal"  label="E-Mail"  name="Email" value={this.state.Email} onChange={handleChange('Email')} defaultValue={values.Email}/>
+                    </Grid>
+
+                    <Grid item xs={12} sm={1}></Grid>
+
+                    <Grid item xs={12} sm={2}>
+                    <TextField  fullWidth    margin="normal" 
+                        id="IdStatus"
+                        name="IdStatus"
+                        select
+                        label="Status"
+                        value={this.state.IdStatus} 
+                        onChange={handleChange('IdStatus')}
+                        defaultValue={values.IdStatus}
+                        >
+                        {this.state.lstStatus.map(dado => (
+                                        <MenuItem  key={dado.value} value={dado.value}> {dado.display}</MenuItem>
+                                        ))}
+                    </TextField>
+                    </Grid>
             </form>
 
             <br />
@@ -196,9 +224,13 @@ class PessoaComponent extends Component{
           variant="contained"
           onClick={this.continue}
         >Continuar</Button>
+         &nbsp; &nbsp;
 
-&nbsp;&nbsp;&nbsp;
-                    <Button variant="contained" color="default" formNoValidate  onClick={eve => window.location.href='/'}> Cancelar </Button>
+       <Button
+        variant="contained"   
+        color="default" formNoValidate  
+        onClick={eve => window.location.href='/'}
+        > Cancelar </Button>
 
             </Grid>
     </React.Fragment>
@@ -207,9 +239,12 @@ class PessoaComponent extends Component{
 }
 const formContainer = {
     display: 'flex',
-    flexFlow: 'row wrap',
+    flexFlow: 'row wrap'    
 };
 
+const smallSize ={
+  width: '200px',
+}
 
 
-export default PessoaComponent;
+export default  PessoaComponent;

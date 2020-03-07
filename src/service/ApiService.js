@@ -27,6 +27,9 @@ class ApiService {
     }
 
     addEstados(estados) {
+
+        window.localStorage.removeItem(ESTADOS);
+
         axios.get(API_BASE_URL + 'Estados?actualPage=1&pageSize=20')
         .then(res => {
              if (res.data.results.length === 0)

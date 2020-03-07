@@ -27,6 +27,17 @@ class EnderecoComponent extends Component{
             lstEstados: [],
             lstStatus: [],
             lstTipoEndereco: [],
+          /*  EnderecoId: '',
+            EnderecoIdPessoa: '',
+            EnderecoIdStatus: 0,
+            EnderecoIdTipoEndereco: 0,
+            EnderecoLogradouro: '',
+            EnderecoNumero: '',
+            EnderecoBairro: '',
+            EnderecoCidade: '',
+            EnderecoCep: '',
+            EnderecoIdEstado: '',
+            EnderecoNomeEstado: ''*/
         }
     }
 
@@ -74,6 +85,7 @@ class EnderecoComponent extends Component{
             let pessoa = res.data;
             this.setState({
                 EnderecoId: pessoa.endereco[0].id,
+                EnderecoIdPessoa: pessoa.endereco[0].idPessoa,
                 EnderecoIdStatus: pessoa.endereco[0].idStatus,
                 EnderecoIdTipoEndereco: pessoa.endereco[0].idTipoEndereco,
                 EnderecoLogradouro: pessoa.endereco[0].logradouro,
@@ -97,53 +109,42 @@ class EnderecoComponent extends Component{
           <Typography variant="h6" gutterBottom>
            Dados do Endereço
           </Typography>
-          <Grid container spacing={50}>
                 <form style={formContainer} >
+
+          <Grid container spacing={50}>
+
                    
-                <Grid item xs={12} sm={6}>
-                    <TextField fullWidth margin="normal" 
-                        id="EnderecoIdStatus"
-                        name="EnderecoIdStatus"
-                        select
-                        label="Status"
-                        value={this.state.EnderecoIdStatus} 
-                        onChange={handleChange('EnderecoIdStatus')} defaultValue={values.EnderecoIdStatus}
-                        >
-                          {this.state.lstStatus.map(dado => (
-                                <MenuItem  key={dado.value} value={dado.value}> {dado.display}</MenuItem>
-                                ))}
-                    </TextField>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                    <TextField fullWidth  margin="normal" 
-                        id="EnderecoIdTipoEndereco"
-                        name="EnderecoIdTipoEndereco"
-                        select
-                        label="Tipo Endereço"
-                        value={this.state.EnderecoIdTipoEndereco} 
-                        onChange={handleChange('EnderecoIdTipoEndereco')} defaultValue={values.EnderecoIdTipoEndereco}
-                        >
-                          {this.state.lstTipoEndereco.map(dado => (
-                                <MenuItem  key={dado.value} value={dado.value}> {dado.display}</MenuItem>
-                                ))}
-                    </TextField>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid item xs={12} sm={3}>
                     <TextField type="text" placeholder="Logradouro" fullWidth margin="normal" name="EnderecoLogradouro" value={this.state.EnderecoLogradouro} onChange={handleChange('EnderecoLogradouro')} defaultValue={values.EnderecoLogradouro}/>
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+
+                    <Grid item xs={12} sm={1}></Grid>
+
+                    <Grid item xs={12} sm={1}>
                    <TextField type="text" placeholder="Número" fullWidth margin="normal" name="EnderecoNumero" value={this.state.EnderecoNumero} onChange={handleChange('EnderecoNumero')} defaultValue={values.EnderecoNumero}/>
                    </Grid>
-                   <Grid item xs={12} sm={6}>
+
+                   <Grid item xs={12} sm={1}></Grid>
+
+                   <Grid item xs={12} sm={3}>
                     <TextField type="text" placeholder="Bairro" fullWidth margin="normal" name="EnderecoBairro" value={this.state.EnderecoBairro} onChange={handleChange('EnderecoBairro')} defaultValue={values.EnderecoBairro}/>
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+
+                    <Grid item xs={12} sm={3}></Grid>
+
+                    <Grid item xs={12} sm={3}>
                     <TextField type="text" placeholder="Cidade" fullWidth margin="normal" name="EnderecoCidade" value={this.state.EnderecoCidade} onChange={handleChange('EnderecoCidade')} defaultValue={values.EnderecoCidade}/>
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+
+                    <Grid item xs={12} sm={1}></Grid>
+
+                    <Grid item xs={12} sm={1}>
                     <TextField type="text" placeholder="CEP" fullWidth margin="normal" name="EnderecoCep" value={this.state.EnderecoCep} onChange={handleChange('EnderecoCep')} defaultValue={values.EnderecoCep}/>
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+
+                    <Grid item xs={12} sm={1}></Grid>
+
+                    <Grid item xs={12} sm={3}>
                     <TextField fullWidth margin="normal" 
                         id="EnderecoIdEstado"
                         name="EnderecoIdEstado"
@@ -158,28 +159,64 @@ class EnderecoComponent extends Component{
                     </TextField>
                     </Grid>
 
-            </form>
+                    <Grid item xs={12} sm={3}></Grid>
 
-            <br />
-        
+                    <Grid item xs={12} sm={3}>
+                    <TextField fullWidth  margin="normal" 
+                        id="EnderecoIdTipoEndereco"
+                        name="EnderecoIdTipoEndereco"
+                        select
+                        label="Tipo Endereço"
+                        value={this.state.EnderecoIdTipoEndereco} 
+                        onChange={handleChange('EnderecoIdTipoEndereco')} defaultValue={values.EnderecoIdTipoEndereco}
+                        >
+                          {this.state.lstTipoEndereco.map(dado => (
+                                <MenuItem  key={dado.value} value={dado.value}> {dado.display}</MenuItem>
+                                ))}
+                    </TextField>
+                    </Grid>
+
+                    <Grid item xs={12} sm={1}></Grid>
+
+                    <Grid item xs={12} sm={1}>
+                    <TextField fullWidth margin="normal" 
+                        id="EnderecoIdStatus"
+                        name="EnderecoIdStatus"
+                        select
+                        label="Status"
+                        value={this.state.EnderecoIdStatus} 
+                        onChange={handleChange('EnderecoIdStatus')} defaultValue={values.EnderecoIdStatus}
+                        >
+                          {this.state.lstStatus.map(dado => (
+                                <MenuItem  key={dado.value} value={dado.value}> {dado.display}</MenuItem>
+                                ))}
+                    </TextField>
+                    </Grid>
+            </Grid>
+
         <Button
           color="default"
           variant="contained"
           onClick={this.back}
         >Voltar</Button>
 
-&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
         <Button
           color="primary"
           variant="contained"
           onClick={this.continue}
         >Continuar</Button>
 
-&nbsp;&nbsp;&nbsp;
-                    <Button variant="contained" color="default" formNoValidate  onClick={eve => window.location.href='/'}> Cancelar </Button>
+        &nbsp;&nbsp;&nbsp;
+        <Button 
+        variant="contained" 
+        color="default" 
+        onClick={eve => window.location.href='/'}
+        > Cancelar </Button>
 
 
-            </Grid>
+      </form>
+
     </React.Fragment>
         );
     }
