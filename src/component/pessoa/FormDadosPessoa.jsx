@@ -18,10 +18,6 @@ class PessoaComponent extends Component{
     this.props.nextStep();
   };
 
-  back = e => {
-    e.preventDefault();
-    this.props.prevStep();
-  };
 
     constructor(props){
         super(props);
@@ -30,24 +26,10 @@ class PessoaComponent extends Component{
             tipoPessoa: '',
             lstStatus: [],
             lstTipoPessoa: [],
-           /* Id: '',
-            IdStatus: 0,
-            IdTipoPessoa: 0,
-            Nome: '',
-            NomeSocial: '',
-            CpfCnpj: '',
-            RgIe: '',
-            DataNascimentoAbertura: "2020-03-02",
-            Sexo: '',
-            Email: '',
-            NumeroTelefoneFixo: '',
-            NumeroCelular: ''*/
         }
     }
 
-    componentWillMount() {
-
-      this.loadPessoa();
+    componentDidMount() {
 
       const status = ApiService.getStatus();
       const tipoPessoa = ApiService.getTipoPessoa();
@@ -66,39 +48,7 @@ class PessoaComponent extends Component{
           lstStatus: [].concat(statusAPI),
           lstTipoPessoa: [].concat(tipoPessoaAPI),
         });
-
-        this.loadPessoa = this.loadPessoa.bind(this);
   }
-
-
-  loadPessoa() {
-      
-    const acaoForm = window.localStorage.getItem("acaoForm");
-    const pessoaId = window.localStorage.getItem("pessoaId");
-
-    // se for ação de alteração 
-    if (pessoaId !== '' && acaoForm === '1')
-    {
-    ApiService.fetchPessoaById(pessoaId)
-        .then((res) => {
-            let pessoa = res.data;
-            this.setState({
-                Id: pessoa.id,
-                IdStatus: pessoa.idStatus,
-                IdTipoPessoa: pessoa.idTipoPessoa,
-                Nome: pessoa.nome,
-                NomeSocial: pessoa.nomeSocial,
-                CpfCnpj: pessoa.cpfCnpj,
-                RgIe: pessoa.rgIe,
-                DataNascimentoAbertura: pessoa.dataNascimentoAbertura,
-                Sexo: pessoa.sexo,
-                Email: pessoa.email,
-                NumeroTelefoneFixo: pessoa.numeroTelefoneFixo,
-                NumeroCelular: pessoa.numeroCelular
-            })
-        });
-      }
-}
 
     render() {
 
@@ -114,19 +64,19 @@ class PessoaComponent extends Component{
                
                     <Grid   item xs={12} sm={3}>
                     <FormLabel component="legend">Nome</FormLabel>
-                    <TextField type="text" placeholder="Nome" fullWidth    margin="normal" name="Nome" value={this.state.Nome}  onChange={handleChange('Nome')} defaultValue={values.Nome}/>
+                    <TextField type="text" placeholder="Nome" fullWidth    margin="normal" name="Nome" value={this.state.Nome}  onChange={handleChange()} defaultValue={values.Nome}/>
                     </Grid>
                     <Grid item xs={12} sm={1}></Grid>
                     <Grid  item xs={12} sm={3}>
                     <FormLabel component="legend">Nome Social</FormLabel>
-                    <TextField type="text" placeholder="Nome Social" fullWidth  margin="normal" name="NomeSocial" value={this.state.NomeSocial}  onChange={handleChange('NomeSocial')} defaultValue={values.NomeSocial}/>
+                    <TextField type="text" placeholder="Nome Social" fullWidth  margin="normal" name="NomeSocial" value={this.state.NomeSocial}  onChange={handleChange()} defaultValue={values.NomeSocial}/>
                     </Grid>
                     <Grid item xs={12} sm={1}></Grid>
        
                     <Grid item xs={12} sm={3}>
                     <FormControl component="fieldset" fullWidth >
                       <FormLabel component="legend">Gênero</FormLabel>
-                      <RadioGroup aria-label="position"   name="Sexo" value={this.state.Sexo} onChange={handleChange('Sexo')} defaultValue={values.Sexo} row>
+                      <RadioGroup aria-label="position"   name="Sexo" value={this.state.Sexo} onChange={handleChange()} defaultValue={values.Sexo} row>
                       
                         <FormControlLabel
                           value="M"
@@ -152,7 +102,7 @@ class PessoaComponent extends Component{
                         name="IdTipoPessoa"
                         select
                         value={this.state.IdTipoPessoa} 
-                        onChange={handleChange('IdTipoPessoa')}
+                        onChange={handleChange()}
                         defaultValue={values.IdTipoPessoa}
                         >
                         {this.state.lstTipoPessoa.map(dado => (
@@ -165,14 +115,14 @@ class PessoaComponent extends Component{
 
                     <Grid item xs={12} sm={2}>
                     <FormLabel component="legend">Cpf / Cnpj</FormLabel>                   
-                    <TextField type="text" placeholder="Cpf / Cnpj" fullWidth  margin="normal"  name="CpfCnpj" value={this.state.CpfCnpj} onChange={handleChange('CpfCnpj')} defaultValue={values.CpfCnpj}/>
+                    <TextField type="text" placeholder="Cpf / Cnpj" fullWidth  margin="normal"  name="CpfCnpj" value={this.state.CpfCnpj} onChange={handleChange()} defaultValue={values.CpfCnpj}/>
                     </Grid>
                    
                     <Grid item xs={12} sm={1}></Grid>
                    
                     <Grid item xs={12} sm={2}>
                     <FormLabel component="legend">Rg / Ie</FormLabel>
-                    <TextField type="text" placeholder="Rg / Ie" fullWidth  margin="normal"   name="RgIe" value={this.state.RgIe} onChange={handleChange('RgIe')} defaultValue={values.RgIe}/>
+                    <TextField type="text" placeholder="Rg / Ie" fullWidth  margin="normal"   name="RgIe" value={this.state.RgIe} onChange={handleChange()} defaultValue={values.RgIe}/>
                     </Grid>
 
                     <Grid item xs={12} sm={1}></Grid>
@@ -184,7 +134,7 @@ class PessoaComponent extends Component{
                       name="DataNascimentoAbertura"
                       type="date"
                       value={this.state.DataNascimentoAbertura}
-                      onChange={handleChange('DataNascimentoAbertura')} defaultValue={values.DataNascimentoAbertura}
+                      onChange={handleChange()} defaultValue={values.DataNascimentoAbertura}
                      
                     />
                     </Grid>
@@ -192,21 +142,21 @@ class PessoaComponent extends Component{
                   
                     <Grid  item xs={12} sm={2}>
                     <FormLabel component="legend">Fone Fixo</FormLabel>
-                    <TextField type="text" placeholder="Fone Fixo" fullWidth   margin="normal" name="NumeroTelefoneFixo" value={this.state.NumeroTelefoneFixo} onChange={handleChange('NumeroTelefoneFixo')} defaultValue={values.NumeroTelefoneFixo}/>
+                    <TextField type="text" placeholder="Fone Fixo" fullWidth   margin="normal" name="NumeroTelefoneFixo" value={this.state.NumeroTelefoneFixo} onChange={handleChange()} defaultValue={values.NumeroTelefoneFixo}/>
                     </Grid>
 
                     <Grid item xs={12} sm={1}></Grid>
 
                     <Grid item xs={12} sm={2}>
                     <FormLabel component="legend">Celular</FormLabel>
-                    <TextField type="text" placeholder="Celular" fullWidth   margin="normal" name="NumeroCelular" value={this.state.NumeroCelular} onChange={handleChange('NumeroCelular')} defaultValue={values.NumeroCelular}/>
+                    <TextField type="text" placeholder="Celular" fullWidth   margin="normal" name="NumeroCelular" value={this.state.NumeroCelular} onChange={handleChange()} defaultValue={values.NumeroCelular}/>
                     </Grid>
 
                     <Grid item xs={12} sm={1}></Grid>
 
                     <Grid item xs={12} sm={2}>
                     <FormLabel component="legend">E-Mail</FormLabel>
-                    <TextField type="text" placeholder="E-Mail"  fullWidth margin="normal"   name="Email" value={this.state.Email} onChange={handleChange('Email')} defaultValue={values.Email}/>
+                    <TextField type="text" placeholder="E-Mail"  fullWidth margin="normal"   name="Email" value={this.state.Email} onChange={handleChange()} defaultValue={values.Email}/>
                     </Grid>
 
                     <Grid item xs={12} sm={1}></Grid>
@@ -218,7 +168,7 @@ class PessoaComponent extends Component{
                         name="IdStatus"
                         select
                         value={this.state.IdStatus} 
-                        onChange={handleChange('IdStatus')}
+                        onChange={handleChange()}
                         defaultValue={values.IdStatus}
                         >
                         {this.state.lstStatus.map(dado => (
@@ -228,20 +178,20 @@ class PessoaComponent extends Component{
                     </Grid>
             </form>
 
-            <br />
-        
+
         <Button
           color="primary"
           variant="contained"
           onClick={this.continue}
         >Continuar</Button>
-         &nbsp; &nbsp;
 
-       <Button
-        variant="contained"   
-        color="default" formNoValidate  
+        &nbsp;&nbsp;&nbsp;
+        <Button 
+        variant="contained" 
+        color="default" 
         onClick={eve => window.location.href='/'}
         > Cancelar </Button>
+
 
             </Grid>
     </React.Fragment>
@@ -252,10 +202,6 @@ const formContainer = {
     display: 'flex',
     flexFlow: 'row wrap'    
 };
-
-const smallSize ={
-  width: '200px',
-}
 
 
 export default  PessoaComponent;

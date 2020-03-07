@@ -13,12 +13,6 @@ const style = {
 
 
 export class NavBar extends Component {
-
-
-    constructor(props){
-        super(props);
-       // this.state ={}
-    }
     
 addPessoa() {
     window.localStorage.setItem("acaoForm", 0);
@@ -27,27 +21,27 @@ addPessoa() {
 }
 
     render() {
-    return (
-        <div>
-            <AppBar style={style} position="static">
-                <Toolbar>
-                    <IconButton edge="start" color="inherit" aria-label="Menu">
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" style={style}>
-                      SAGE - Cadastro de Pessoas
-                    </Typography> 
-                      
-                    <Button variant="text" color="inherit" formNoValidate  onClick={eve => window.location.href='/consulta-pessoas'}> Consulta  </Button>
-                    &nbsp;&nbsp;&nbsp;
-                    <Button variant="text" color="inherit" formNoValidate  onClick={() => this.addPessoa()}> Novo Cadastro  </Button>
-                    &nbsp;&nbsp;&nbsp;
-                    <Button variant="text" color="inherit" formNoValidate  onClick={eve => window.location.href='/'}> Home </Button>
-                </Toolbar>
-            </AppBar>
-        </div>
-    )
-}
+        return (
+            <div>
+                <AppBar style={style} position="static">
+                    <Toolbar>
+                        <IconButton edge="start" color="inherit" aria-label="Menu">
+                            <MenuIcon />
+                        </IconButton>
+                        <Typography variant="h6" style={style}>
+                        SAGE - Cadastro de Pessoas
+                        </Typography> 
+                        
+                        <Button variant="text" color="inherit" formNoValidate  onClick={eve => window.location.href='/consulta-pessoas'}> Consulta  </Button>
+                        &nbsp;&nbsp;&nbsp;
+                        <Button variant="text" color="inherit" formNoValidate  onClick={() => this.addPessoa()}> Novo Cadastro  </Button>
+                        &nbsp;&nbsp;&nbsp;
+                        <Button variant="text" color="inherit" formNoValidate  onClick={eve => window.location.href='/'}> Home </Button>
+                    </Toolbar>
+                </AppBar>
+            </div>
+        )
+    }
 }
 
 export default NavBar;

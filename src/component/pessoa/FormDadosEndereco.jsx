@@ -28,23 +28,10 @@ class EnderecoComponent extends Component{
             lstEstados: [],
             lstStatus: [],
             lstTipoEndereco: [],
-          /*  EnderecoId: '',
-            EnderecoIdPessoa: '',
-            EnderecoIdStatus: 0,
-            EnderecoIdTipoEndereco: 0,
-            EnderecoLogradouro: '',
-            EnderecoNumero: '',
-            EnderecoBairro: '',
-            EnderecoCidade: '',
-            EnderecoCep: '',
-            EnderecoIdEstado: '',
-            EnderecoNomeEstado: ''*/
         }
     }
 
-    componentWillMount() {
-
-      this.loadEndereco();
+    componentDidMount() {
 
       const estados = ApiService.getEstados();
       const status = ApiService.getStatus();
@@ -69,37 +56,7 @@ class EnderecoComponent extends Component{
           lstStatus: [].concat(statusAPI),
           lstTipoEndereco: [].concat(tipoEnderecoAPI)
         });
-
-        this.loadEndereco = this.loadEndereco.bind(this);
   }
-
-  loadEndereco() {
-      
-    const acaoForm = window.localStorage.getItem("acaoForm");
-    const pessoaId = window.localStorage.getItem("pessoaId");
-
-    // se for ação de alteração 
-    if (pessoaId != '' && acaoForm === '1')
-    {
-    ApiService.fetchPessoaById(pessoaId)
-        .then((res) => {
-            let pessoa = res.data;
-            this.setState({
-                EnderecoId: pessoa.endereco[0].id,
-                EnderecoIdPessoa: pessoa.endereco[0].idPessoa,
-                EnderecoIdStatus: pessoa.endereco[0].idStatus,
-                EnderecoIdTipoEndereco: pessoa.endereco[0].idTipoEndereco,
-                EnderecoLogradouro: pessoa.endereco[0].logradouro,
-                EnderecoNumero: pessoa.endereco[0].numero,
-                EnderecoBairro: pessoa.endereco[0].bairro,
-                EnderecoCidade: pessoa.endereco[0].cidade,
-                EnderecoCep: pessoa.endereco[0].cep,
-                EnderecoIdEstado: pessoa.endereco[0].idEstado                  
-            })
-        });
-      }
-}
-
 
     render() {
 

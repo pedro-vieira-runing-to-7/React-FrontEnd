@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import FormDadosPessoa from './FormDadosPessoa';
 import FormDadosEndereco from './FormDadosEndereco';
 import Confirmar from './FormConfirmar';
+import FormSart from './FormStart';
 import Successo from './Sucesso';
+import ApiService from "../../service/ApiService";
 
 export class StepsCadastro extends Component {
-  state = {
+
+  constructor(props){
+    super(props);
+
+  this.state = {
             step: 1,
             Id: '',
             IdStatus: 0,
@@ -29,7 +35,54 @@ export class StepsCadastro extends Component {
             EnderecoCep: '',
             EnderecoIdEstado: '',
             EnderecoNomeEstado: ''
-         };
+         }
+      }
+      
+    componentWillMount() {
+       this.loadPessoa();
+       this.loadPessoa = this.loadPessoa.bind(this);      
+   }
+
+  loadPessoa() {
+      
+    const acaoForm = window.localStorage.getItem("acaoForm");
+    const pessoaId = window.localStorage.getItem("pessoaId");
+
+    // se for ação de alteração 
+    if (pessoaId !== '' && acaoForm === '1')
+    {
+    ApiService.fetchPessoaById(pessoaId)
+        .then((res) => {
+            let pessoa = res.data;
+            this.setState({
+                Id: pessoa.id,
+                IdStatus:  pessoa.idStatus,
+                IdTipoPessoa: pessoa.idTipoPessoa,
+                Nome: pessoa.nome,
+                NomeSocial: pessoa.nomeSocial,
+                CpfCnpj: pessoa.cpfCnpj,
+                RgIe: pessoa.rgIe,
+                DataNascimentoAbertura: pessoa.dataNascimentoAbertura,
+                Sexo: pessoa.sexo,
+                Email: pessoa.email,
+                NumeroTelefoneFixo: pessoa.numeroTelefoneFixo,
+                NumeroCelular: pessoa.numeroCelular,
+                EnderecoId: pessoa.endereco[0].id,
+                EnderecoIdPessoa: pessoa.endereco[0].idPessoa,
+                EnderecoIdStatus: pessoa.endereco[0].idStatus,
+                EnderecoIdTipoEndereco: pessoa.endereco[0].idTipoEndereco,
+                EnderecoLogradouro: pessoa.endereco[0].logradouro,
+                EnderecoNumero: pessoa.endereco[0].numero,
+                EnderecoBairro: pessoa.endereco[0].bairro,
+                EnderecoCidade: pessoa.endereco[0].cidade,
+                EnderecoCep: pessoa.endereco[0].cep,
+                EnderecoIdEstado: pessoa.endereco[0].idEstado,      
+                EnderecoNomeEstado: ''
+            })
+        });
+      }
+}
+
 
 /////////////////////////////////////////////////////////////////////////////////
 
@@ -51,7 +104,7 @@ export class StepsCadastro extends Component {
 
   // Handle fields change
   handleChange = input => e => {
-    this.setState({ [input]: e.target.value });
+    this.setState({ [e.target.name]:  e.target.value });
   };
 
   render() {
@@ -106,13 +159,21 @@ export class StepsCadastro extends Component {
     switch (step) {
       case 1:
         return (
-          <FormDadosPessoa
+          <FormSart
             nextStep={this.nextStep}
             handleChange={this.handleChange}
             values={values}
           />
         );
-      case 2:
+        case 2:
+          return (
+            <FormDadosPessoa
+              nextStep={this.nextStep}
+              handleChange={this.handleChange}
+              values={values}
+            />
+          );
+      case 3:
         return (
           <FormDadosEndereco
             nextStep={this.nextStep}
@@ -121,7 +182,7 @@ export class StepsCadastro extends Component {
             values={values}
           />
         );
-      case 3:
+      case 4:
         return (
           <Confirmar
             nextStep={this.nextStep}
@@ -129,7 +190,7 @@ export class StepsCadastro extends Component {
             values={values}
           />
         );
-      case 4:
+      case 5:
         return <Successo />;
     }
   }
