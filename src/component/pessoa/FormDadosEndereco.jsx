@@ -5,6 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import ApiService from "../../service/ApiService";
+import FormLabel from '@material-ui/core/FormLabel';
 
 class EnderecoComponent extends Component{   
   
@@ -41,7 +42,7 @@ class EnderecoComponent extends Component{
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
 
       this.loadEndereco();
 
@@ -115,41 +116,46 @@ class EnderecoComponent extends Component{
 
                    
                     <Grid item xs={12} sm={3}>
+                    <FormLabel component="legend">Logradouro</FormLabel>  
                     <TextField type="text" placeholder="Logradouro" fullWidth margin="normal" name="EnderecoLogradouro" value={this.state.EnderecoLogradouro} onChange={handleChange('EnderecoLogradouro')} defaultValue={values.EnderecoLogradouro}/>
                     </Grid>
 
                     <Grid item xs={12} sm={1}></Grid>
 
                     <Grid item xs={12} sm={1}>
+                    <FormLabel component="legend">Número</FormLabel>  
                    <TextField type="text" placeholder="Número" fullWidth margin="normal" name="EnderecoNumero" value={this.state.EnderecoNumero} onChange={handleChange('EnderecoNumero')} defaultValue={values.EnderecoNumero}/>
                    </Grid>
 
                    <Grid item xs={12} sm={1}></Grid>
 
                    <Grid item xs={12} sm={3}>
+                   <FormLabel component="legend">Bairro</FormLabel>  
                     <TextField type="text" placeholder="Bairro" fullWidth margin="normal" name="EnderecoBairro" value={this.state.EnderecoBairro} onChange={handleChange('EnderecoBairro')} defaultValue={values.EnderecoBairro}/>
                     </Grid>
 
                     <Grid item xs={12} sm={3}></Grid>
 
                     <Grid item xs={12} sm={3}>
+                    <FormLabel component="legend">Cidade</FormLabel>  
                     <TextField type="text" placeholder="Cidade" fullWidth margin="normal" name="EnderecoCidade" value={this.state.EnderecoCidade} onChange={handleChange('EnderecoCidade')} defaultValue={values.EnderecoCidade}/>
                     </Grid>
 
                     <Grid item xs={12} sm={1}></Grid>
 
                     <Grid item xs={12} sm={1}>
+                    <FormLabel component="legend">CEP</FormLabel>  
                     <TextField type="text" placeholder="CEP" fullWidth margin="normal" name="EnderecoCep" value={this.state.EnderecoCep} onChange={handleChange('EnderecoCep')} defaultValue={values.EnderecoCep}/>
                     </Grid>
 
                     <Grid item xs={12} sm={1}></Grid>
 
                     <Grid item xs={12} sm={3}>
+                    <FormLabel component="legend">Estado</FormLabel>  
                     <TextField fullWidth margin="normal" 
                         id="EnderecoIdEstado"
                         name="EnderecoIdEstado"
                         select
-                        label="Estado"
                         value={this.state.EnderecoIdEstado} 
                         onChange={handleChange('EnderecoIdEstado')} defaultValue={values.EnderecoIdEstado}
                         >
@@ -162,11 +168,11 @@ class EnderecoComponent extends Component{
                     <Grid item xs={12} sm={3}></Grid>
 
                     <Grid item xs={12} sm={3}>
+                    <FormLabel component="legend">Tipo Endereço</FormLabel>  
                     <TextField fullWidth  margin="normal" 
                         id="EnderecoIdTipoEndereco"
                         name="EnderecoIdTipoEndereco"
                         select
-                        label="Tipo Endereço"
                         value={this.state.EnderecoIdTipoEndereco} 
                         onChange={handleChange('EnderecoIdTipoEndereco')} defaultValue={values.EnderecoIdTipoEndereco}
                         >
@@ -179,11 +185,11 @@ class EnderecoComponent extends Component{
                     <Grid item xs={12} sm={1}></Grid>
 
                     <Grid item xs={12} sm={1}>
+                    <FormLabel component="legend">Status</FormLabel>  
                     <TextField fullWidth margin="normal" 
                         id="EnderecoIdStatus"
                         name="EnderecoIdStatus"
                         select
-                        label="Status"
                         value={this.state.EnderecoIdStatus} 
                         onChange={handleChange('EnderecoIdStatus')} defaultValue={values.EnderecoIdStatus}
                         >
