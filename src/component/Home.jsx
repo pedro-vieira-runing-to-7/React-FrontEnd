@@ -7,7 +7,7 @@ import ApiService from "../service/ApiService";
 
 class Home extends Component{   
 
-  componentDidMount() {
+  componentWillUnmount() {
         
     let estados = [ {Sigla: 'SP', Nome: 'São Paulo'}, 
     {Sigla: 'PR', Nome: 'Paraná'}, 

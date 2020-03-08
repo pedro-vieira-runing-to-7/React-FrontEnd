@@ -16,7 +16,6 @@ export class FormStart extends Component {
 
 componentWillMount() {
   const acaoForm = window.localStorage.getItem("acaoForm");
-
   this.setState({Acao: acaoForm === "1" ? 'Você irá alterar um cadastro' : 'Você irá fazer um cadastro'});
 }
  
