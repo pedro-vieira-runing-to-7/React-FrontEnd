@@ -17,5 +17,6 @@ Poderá ser consultado os métodos via swagger neste endereço: (https://localho
 ### REACT JS
 ### A Aplicação consome uma API Restful via Axios
 ### O design foi feito usando o framework Material-UI
+### A validação das informaçães antes de enviar para a API, foi feita usando react-material-ui-form-validator
 
-## TODO: Segregar as ações usando Redux e validar as informaçães antes de enviar para a API
+## TODO: Segregar as ações usando Redux
