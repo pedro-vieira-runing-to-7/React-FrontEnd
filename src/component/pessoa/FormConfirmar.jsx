@@ -9,30 +9,7 @@ export class Confirmar extends Component {
 
   constructor(props){
     super(props);
-    this.state ={
-        Id: this.props.values.Id,
-        IdStatus: this.props.values.IdStatus,
-        IdTipoPessoa: this.props.values.IdTipoPessoa,
-        Nome: this.props.values.Nome,
-        NomeSocial: this.props.values.NomeSocial,
-        CpfCnpj: this.props.values.CpfCnpj,
-        RgIe: this.props.values.RgIe,
-        DataNascimentoAbertura: this.props.values.DataNascimentoAbertura,
-        Sexo: this.props.values.Sexo,
-        Email: this.props.values.Email,
-        NumeroTelefoneFixo: this.props.values.NumeroTelefoneFixo,
-        NumeroCelular: this.props.values.NumeroCelular,
-        EnderecoId: this.props.values.EnderecoId,
-        EnderecoIdStatus: this.props.values.EnderecoIdStatus,
-        EnderecoIdTipoEndereco: this.props.values.EnderecoIdTipoEndereco,
-        EnderecoLogradouro: this.props.values.EnderecoLogradouro,
-        EnderecoNumero: this.props.values.EnderecoNumero,
-        EnderecoBairro: this.props.values.EnderecoBairro,
-        EnderecoCidade: this.props.values.EnderecoCidade,
-        EnderecoCep: this.props.values.EnderecoCep,
-        EnderecoIdEstado: this.props.values.EnderecoIdEstado
-    }
-
+  
     this.SaveAndContinue = this.SaveAndContinue.bind(this);
 }
 
@@ -45,26 +22,26 @@ export class Confirmar extends Component {
   if (acaoForm === "0"){
 
     let pessoa = { 
-      IdStatus: this.state.IdStatus,
-      IdTipoPessoa: this.state.IdTipoPessoa,
-      Nome: this.state.Nome,
-      NomeSocial: this.state.NomeSocial,
-      CpfCnpj: this.state.CpfCnpj,
-      RgIe: this.state.RgIe,
-      DataNascimentoAbertura: this.state.DataNascimentoAbertura,
-      Sexo: this.state.Sexo,
-      Email: this.state.Email,
-      NumeroTelefoneFixo: this.state.NumeroTelefoneFixo,
-      NumeroCelular: this.state.NumeroCelular,
+      IdStatus: this.props.data.IdStatus,
+      IdTipoPessoa: this.props.data.IdTipoPessoa,
+      Nome: this.props.data.Nome,
+      NomeSocial: this.props.data.NomeSocial,
+      CpfCnpj: this.props.data.CpfCnpj,
+      RgIe: this.props.data.RgIe,
+      DataNascimentoAbertura: this.props.data.DataNascimentoAbertura,
+      Sexo: this.props.data.Sexo,
+      Email: this.props.data.Email,
+      NumeroTelefoneFixo: this.props.data.NumeroTelefoneFixo,
+      NumeroCelular: this.props.data.NumeroCelular,
       Endereco: [ {    
-         IdStatus: this.state.EnderecoIdStatus,
-         IdTipoEndereco: this.state.EnderecoIdTipoEndereco,
-         Logradouro: this.state.EnderecoLogradouro,
-         Numero: this.state.EnderecoNumero,
-         Bairro: this.state.EnderecoBairro,
-         Cidade: this.state.EnderecoCidade,
-         Cep: this.state.EnderecoCep,
-         IdEstado: this.state.EnderecoIdEstado 
+         IdStatus: this.props.data.EnderecoIdStatus,
+         IdTipoEndereco: this.props.data.EnderecoIdTipoEndereco,
+         Logradouro: this.props.data.EnderecoLogradouro,
+         Numero: this.props.data.EnderecoNumero,
+         Bairro: this.props.data.EnderecoBairro,
+         Cidade: this.props.data.EnderecoCidade,
+         Cep: this.props.data.EnderecoCep,
+         IdEstado: this.props.data.EnderecoIdEstado 
        }]
   };
 
@@ -75,28 +52,28 @@ export class Confirmar extends Component {
   }else{
 
     let pessoa = { 
-      Id: this.state.Id,
-      IdStatus: this.state.IdStatus,
-      IdTipoPessoa: this.state.IdTipoPessoa,
-      Nome: this.state.Nome,
-      NomeSocial: this.state.NomeSocial,
-      CpfCnpj: this.state.CpfCnpj,
-      RgIe: this.state.RgIe,
-      DataNascimentoAbertura: this.state.DataNascimentoAbertura,
-      Sexo: this.state.Sexo,
-      Email: this.state.Email,
-      NumeroTelefoneFixo: this.state.NumeroTelefoneFixo,
-      NumeroCelular: this.state.NumeroCelular,
+      Id: this.props.data.Id,
+      IdStatus: this.props.data.IdStatus,
+      IdTipoPessoa: this.props.data.IdTipoPessoa,
+      Nome: this.props.data.Nome,
+      NomeSocial: this.props.data.NomeSocial,
+      CpfCnpj: this.props.data.CpfCnpj,
+      RgIe: this.props.data.RgIe,
+      DataNascimentoAbertura: this.props.data.DataNascimentoAbertura,
+      Sexo: this.props.data.Sexo,
+      Email: this.props.data.Email,
+      NumeroTelefoneFixo: this.props.data.NumeroTelefoneFixo,
+      NumeroCelular: this.props.data.NumeroCelular,
       Endereco: [ {    
-         Id: this.state.EnderecoId,            
-         IdStatus: this.state.EnderecoIdStatus,
-         IdTipoEndereco: this.state.EnderecoIdTipoEndereco,
-         Logradouro: this.state.EnderecoLogradouro,
-         Numero: this.state.EnderecoNumero,
-         Bairro: this.state.EnderecoBairro,
-         Cidade: this.state.EnderecoCidade,
-         Cep: this.state.EnderecoCep,
-         IdEstado: this.state.EnderecoIdEstado 
+         Id: this.props.data.EnderecoId,            
+         IdStatus: this.props.data.EnderecoIdStatus,
+         IdTipoEndereco: this.props.data.EnderecoIdTipoEndereco,
+         Logradouro: this.props.data.EnderecoLogradouro,
+         Numero: this.props.data.EnderecoNumero,
+         Bairro: this.props.data.EnderecoBairro,
+         Cidade: this.props.data.EnderecoCidade,
+         Cep: this.props.data.EnderecoCep,
+         IdEstado: this.props.data.EnderecoIdEstado 
        }]
   };
 
@@ -116,31 +93,7 @@ export class Confirmar extends Component {
   };
 
   render() {
-    const {
-       values: {
-        Id,
-        IdStatus,
-        IdTipoPessoa,
-        Nome,
-        NomeSocial,
-        CpfCnpj,
-        RgIe,
-        DataNascimentoAbertura,
-        Sexo,
-        Email,
-        NumeroTelefoneFixo,
-        NumeroCelular,
-        EnderecoId,
-        EnderecoIdStatus,
-        EnderecoIdTipoEndereco,
-        EnderecoLogradouro,
-        EnderecoNumero,
-        EnderecoBairro,
-        EnderecoCidade,
-        EnderecoCep,
-        EnderecoIdEstado,
-        EnderecoNomeEstado }
-    } = this.props;
+    const { data } = this.props;
 
 
     return (
@@ -154,61 +107,61 @@ export class Confirmar extends Component {
       <Grid container spacing={3}>
           <List>
           <ListItem>
-              <ListItemText  primary="Status" secondary={IdStatus > 0 ? IdStatus === 1 ? 'Ativo' : 'Inativo' : 'Novo' } /> 
+              <ListItemText  primary="Status" secondary={data.IdStatus > 0 ? data.IdStatus === 1 ? 'Ativo' : 'Inativo' : 'Novo' } /> 
             </ListItem>
           <ListItem>
-              <ListItemText  primary="Tipo Pessoa" secondary={IdTipoPessoa > 0 ? 'Jurídica' : 'Física'} /> 
+              <ListItemText  primary="Tipo Pessoa" secondary={data.IdTipoPessoa > 0 ? 'Jurídica' : 'Física'} /> 
             </ListItem>
             <ListItem>
-              <ListItemText  primary="Nome" secondary={Nome} /> 
+              <ListItemText  primary="Nome" secondary={data.Nome} /> 
             </ListItem>
             <ListItem>
-              <ListItemText  primary="Nome Social" secondary={NomeSocial} /> 
+              <ListItemText  primary="Nome Social" secondary={data.NomeSocial} /> 
             </ListItem>
             <ListItem>
-              <ListItemText  primary="CPF/CNPJ" secondary={CpfCnpj} /> 
+              <ListItemText  primary="CPF/CNPJ" secondary={data.CpfCnpj} /> 
             </ListItem>
             <ListItem>
-              <ListItemText  primary="RG/IE" secondary={RgIe} /> 
+              <ListItemText  primary="RG/IE" secondary={data.RgIe} /> 
             </ListItem>
             <ListItem>
-              <ListItemText  primary="Nascimento/Abertura" secondary={DataNascimentoAbertura} /> 
+              <ListItemText  primary="Nascimento/Abertura" secondary={data.DataNascimentoAbertura} /> 
             </ListItem>
             <ListItem>
-              <ListItemText  primary="Sexo" secondary={Sexo} /> 
+              <ListItemText  primary="Sexo" secondary={data.Sexo} /> 
             </ListItem>
             <ListItem>
-              <ListItemText  primary="E-mail" secondary={Email} /> 
+              <ListItemText  primary="E-mail" secondary={data.Email} /> 
             </ListItem>
             <ListItem>
-              <ListItemText  primary="Fone Fixo" secondary={NumeroTelefoneFixo} /> 
+              <ListItemText  primary="Fone Fixo" secondary={data.NumeroTelefoneFixo} /> 
             </ListItem>
             <ListItem>
-              <ListItemText  primary="Celular" secondary={NumeroCelular} /> 
+              <ListItemText  primary="Celular" secondary={data.NumeroCelular} /> 
             </ListItem>
             <ListItem>
-              <ListItemText  primary="Status Endereço" secondary={EnderecoIdStatus > 0 ? EnderecoIdStatus === 1 ? 'Ativo' : 'Inativo' : 'Novo'} /> 
+              <ListItemText  primary="Status Endereço" secondary={data.EnderecoIdStatus > 0 ? data.EnderecoIdStatus === 1 ? 'Ativo' : 'Inativo' : 'Novo'} /> 
             </ListItem>
             <ListItem>
-              <ListItemText  primary="Tipo Endereço" secondary={EnderecoIdTipoEndereco > 0 ? 'Entrega' : 'Cobrança'} /> 
+              <ListItemText  primary="Tipo Endereço" secondary={data.EnderecoIdTipoEndereco > 0 ? 'Entrega' : 'Cobrança'} /> 
             </ListItem>
             <ListItem>
-              <ListItemText  primary="Logradouro" secondary={EnderecoLogradouro} /> 
+              <ListItemText  primary="Logradouro" secondary={data.EnderecoLogradouro} /> 
             </ListItem>
             <ListItem>
-              <ListItemText primary="Número"  secondary={EnderecoNumero} /> 
+              <ListItemText primary="Número"  secondary={data.EnderecoNumero} /> 
             </ListItem>
             <ListItem>
-              <ListItemText primary="Bairro"  secondary={EnderecoBairro} /> 
+              <ListItemText primary="Bairro"  secondary={data.EnderecoBairro} /> 
             </ListItem>
             <ListItem>
-              <ListItemText  primary="Cidade" secondary={EnderecoCidade} /> 
+              <ListItemText  primary="Cidade" secondary={data.EnderecoCidade} /> 
             </ListItem>
             <ListItem>
-              <ListItemText  primary="Cep" secondary={EnderecoCep} /> 
+              <ListItemText  primary="Cep" secondary={data.EnderecoCep} /> 
             </ListItem>
             <ListItem>
-              <ListItemText  primary="Estado" secondary={EnderecoNomeEstado} /> 
+              <ListItemText  primary="Estado" secondary={data.EnderecoNomeEstado} /> 
             </ListItem>
            
           </List>

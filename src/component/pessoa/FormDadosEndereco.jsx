@@ -1,23 +1,14 @@
 import React, { Component } from 'react'
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import ApiService from "../../service/ApiService";
 import FormLabel from '@material-ui/core/FormLabel';
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 class EnderecoComponent extends Component{   
-  
-  continue = e => {
-    e.preventDefault();
-    this.props.nextStep();
-  };
 
-  back = e => {
-    e.preventDefault();
-    this.props.prevStep();
-  };
 
     constructor(props){
         super(props);
@@ -30,6 +21,37 @@ class EnderecoComponent extends Component{
             lstTipoEndereco: [],
         }
     }
+
+      
+    continue = e => {
+      e.preventDefault();
+      
+      this.form.submit();
+  
+            this.form.isFormValid(false).then((isValid) => {
+              if (isValid) {
+                 this.props.nextStep();
+              }
+         });
+    };
+  
+  
+  handleSubmit = () => {
+      this.setState({ submitted: true }, () => {
+          setTimeout(() => this.setState({ submitted: false }), 5000);
+      });
+  }
+  
+
+  back = e => {
+    e.preventDefault();
+    this.props.prevStep();
+  };
+
+
+  validatorListener = (result) => {
+    this.setState({ disabled: !result });
+}
 
     componentDidMount() {
 
@@ -60,100 +82,163 @@ class EnderecoComponent extends Component{
 
     render() {
 
-      const { values, handleChange } = this.props;
+      const { data, handleChange } = this.props;
 
         return(
           <React.Fragment>
           <Typography variant="h6" gutterBottom>
            Dados do Endereço
           </Typography>
-                <form style={formContainer} >
+          <ValidatorForm  style={formContainer} 
+                ref={(r) => { this.form = r; }}
+                onSubmit={this.handleSubmit}
+                instantValidate
+            >
 
           <Grid container spacing={50}>
 
                    
                     <Grid item xs={12} sm={3}>
                     <FormLabel component="legend">Logradouro</FormLabel>  
-                    <TextField type="text" placeholder="Logradouro" fullWidth margin="normal" name="EnderecoLogradouro" value={this.state.EnderecoLogradouro} onChange={handleChange('EnderecoLogradouro')} defaultValue={values.EnderecoLogradouro}/>
+                    <TextValidator 
+                    type="text"
+                    placeholder="Logradouro" 
+                    fullWidth margin="normal" 
+                    name="EnderecoLogradouro"  
+                    onChange={handleChange()}
+                     value={data.EnderecoLogradouro}
+                     validators={['required']}
+                     errorMessages={['* obrigatório']}
+                     validatorListener={this.validatorListener}
+                     />
                     </Grid>
 
                     <Grid item xs={12} sm={1}></Grid>
 
                     <Grid item xs={12} sm={1}>
                     <FormLabel component="legend">Número</FormLabel>  
-                   <TextField type="text" placeholder="Número" fullWidth margin="normal" name="EnderecoNumero" value={this.state.EnderecoNumero} onChange={handleChange('EnderecoNumero')} defaultValue={values.EnderecoNumero}/>
+                   <TextValidator
+                   type="text"
+                    placeholder="Número" 
+                    fullWidth
+                    margin="normal"
+                    name="EnderecoNumero" 
+                    onChange={handleChange()} 
+                    value={data.EnderecoNumero}
+                    validators={['required']}
+                     errorMessages={['* obrigatório']}
+                    validatorListener={this.validatorListener}
+                    />
                    </Grid>
 
                    <Grid item xs={12} sm={1}></Grid>
 
                    <Grid item xs={12} sm={3}>
                    <FormLabel component="legend">Bairro</FormLabel>  
-                    <TextField type="text" placeholder="Bairro" fullWidth margin="normal" name="EnderecoBairro" value={this.state.EnderecoBairro} onChange={handleChange('EnderecoBairro')} defaultValue={values.EnderecoBairro}/>
+                    <TextValidator 
+                    type="text" 
+                    placeholder="Bairro" 
+                    fullWidth 
+                    margin="normal" 
+                    name="EnderecoBairro"  
+                    onChange={handleChange()} 
+                    value={data.EnderecoBairro}
+                    validators={['required']}
+                    errorMessages={['* obrigatório']}
+                    validatorListener={this.validatorListener}
+                    />
                     </Grid>
 
                     <Grid item xs={12} sm={3}></Grid>
 
                     <Grid item xs={12} sm={3}>
                     <FormLabel component="legend">Cidade</FormLabel>  
-                    <TextField type="text" placeholder="Cidade" fullWidth margin="normal" name="EnderecoCidade" value={this.state.EnderecoCidade} onChange={handleChange('EnderecoCidade')} defaultValue={values.EnderecoCidade}/>
+                    <TextValidator 
+                    type="text" 
+                    placeholder="Cidade" 
+                    fullWidth 
+                    margin="normal" 
+                    name="EnderecoCidade"  
+                    onChange={handleChange()} 
+                    value={data.EnderecoCidade}
+                    validators={['required']}
+                     errorMessages={['* obrigatório']}
+                    validatorListener={this.validatorListener}
+                    />
                     </Grid>
 
                     <Grid item xs={12} sm={1}></Grid>
 
                     <Grid item xs={12} sm={1}>
                     <FormLabel component="legend">CEP</FormLabel>  
-                    <TextField type="text" placeholder="CEP" fullWidth margin="normal" name="EnderecoCep" value={this.state.EnderecoCep} onChange={handleChange('EnderecoCep')} defaultValue={values.EnderecoCep}/>
+                    <TextValidator 
+                    type="text" 
+                    placeholder="CEP" 
+                    fullWidth 
+                    margin="normal" 
+                    name="EnderecoCep"  
+                    onChange={handleChange()}
+                    value={data.EnderecoCep}
+                    validators={['required']}
+                     errorMessages={['* obrigatório']}
+                    validatorListener={this.validatorListener}
+                    />
                     </Grid>
 
                     <Grid item xs={12} sm={1}></Grid>
 
                     <Grid item xs={12} sm={3}>
                     <FormLabel component="legend">Estado</FormLabel>  
-                    <TextField fullWidth margin="normal" 
+                    <TextValidator fullWidth margin="normal" 
                         id="EnderecoIdEstado"
                         name="EnderecoIdEstado"
                         select
-                        value={this.state.EnderecoIdEstado} 
-                        onChange={handleChange('EnderecoIdEstado')} defaultValue={values.EnderecoIdEstado}
+                        onChange={handleChange()}
+                        value={data.EnderecoIdEstado}
+                        validators={['required']}
+                        errorMessages={['* obrigatório']}
+                        validatorListener={this.validatorListener}
                         >
                           {this.state.lstEstados.map(dado => (
                                 <MenuItem  key={dado.value} value={dado.value}> {dado.display}</MenuItem>
                                 ))}
-                    </TextField>
+                    </TextValidator>
                     </Grid>
 
                     <Grid item xs={12} sm={3}></Grid>
 
                     <Grid item xs={12} sm={3}>
                     <FormLabel component="legend">Tipo Endereço</FormLabel>  
-                    <TextField fullWidth  margin="normal" 
+                    <TextValidator 
+                    fullWidth  
+                    margin="normal" 
                         id="EnderecoIdTipoEndereco"
                         name="EnderecoIdTipoEndereco"
                         select
-                        value={this.state.EnderecoIdTipoEndereco} 
-                        onChange={handleChange('EnderecoIdTipoEndereco')} defaultValue={values.EnderecoIdTipoEndereco}
+                        onChange={handleChange()} 
+                        value={data.EnderecoIdTipoEndereco}
                         >
                           {this.state.lstTipoEndereco.map(dado => (
                                 <MenuItem  key={dado.value} value={dado.value}> {dado.display}</MenuItem>
                                 ))}
-                    </TextField>
+                    </TextValidator>
                     </Grid>
 
                     <Grid item xs={12} sm={1}></Grid>
 
                     <Grid item xs={12} sm={1}>
                     <FormLabel component="legend">Status</FormLabel>  
-                    <TextField fullWidth margin="normal" 
+                    <TextValidator fullWidth margin="normal" 
                         id="EnderecoIdStatus"
                         name="EnderecoIdStatus"
                         select
-                        value={this.state.EnderecoIdStatus} 
-                        onChange={handleChange('EnderecoIdStatus')} defaultValue={values.EnderecoIdStatus}
+                        onChange={handleChange()} 
+                        value={data.EnderecoIdStatus}
                         >
                           {this.state.lstStatus.map(dado => (
                                 <MenuItem  key={dado.value} value={dado.value}> {dado.display}</MenuItem>
                                 ))}
-                    </TextField>
+                    </TextValidator>
                     </Grid>
             </Grid>
 
@@ -178,7 +263,7 @@ class EnderecoComponent extends Component{
         > Cancelar </Button>
 
 
-      </form>
+      </ValidatorForm>
 
     </React.Fragment>
         );

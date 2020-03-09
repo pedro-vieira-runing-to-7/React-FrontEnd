@@ -8,11 +8,9 @@ import ApiService from "../../service/ApiService";
 
 export class StepsCadastro extends Component {
 
-  constructor(props){
-    super(props);
-
-  this.state = {
-            step: 1,
+  state = {
+            step: 1,           
+            data:{
             Id: '',
             IdStatus: 0,
             IdTipoPessoa: 0,
@@ -36,12 +34,14 @@ export class StepsCadastro extends Component {
             EnderecoIdEstado: '',
             EnderecoNomeEstado: ''
          }
-      }
+       
+        }
       
     componentWillMount() {
        this.loadPessoa();
        this.loadPessoa = this.loadPessoa.bind(this);      
-   }
+    }
+  
 
   loadPessoa() {
       
@@ -55,6 +55,7 @@ export class StepsCadastro extends Component {
         .then((res) => {
             let pessoa = res.data;
             this.setState({
+               data:{
                 Id: pessoa.id,
                 IdStatus:  pessoa.idStatus,
                 IdTipoPessoa: pessoa.idTipoPessoa,
@@ -78,14 +79,14 @@ export class StepsCadastro extends Component {
                 EnderecoCep: pessoa.endereco[0].cep,
                 EnderecoIdEstado: pessoa.endereco[0].idEstado,      
                 EnderecoNomeEstado: ''
-            })
+            }
+          })
         });
       }
 }
 
 
 /////////////////////////////////////////////////////////////////////////////////
-
   // Proceed to next step
   nextStep = () => {
     const { step } = this.state;
@@ -104,12 +105,15 @@ export class StepsCadastro extends Component {
 
   // Handle fields change
   handleChange = input => e => {
-    this.setState({ [e.target.name]:  e.target.value });
+    const { data } = this.state;
+    data[e.target.name] = e.target.value;
+    this.setState({ data });
   };
 
   render() {
-    const { step } = this.state;
-    const { Id,
+    const { step, data } = this.state;
+    
+   /* const { Id,
             IdStatus,
             IdTipoPessoa,
             Nome,
@@ -154,7 +158,7 @@ export class StepsCadastro extends Component {
                       EnderecoCep,
                       EnderecoIdEstado,
                       EnderecoNomeEstado 
-                 };
+                 }; */
 
     switch (step) {
       case 1:
@@ -162,7 +166,7 @@ export class StepsCadastro extends Component {
           <FormSart
             nextStep={this.nextStep}
             handleChange={this.handleChange}
-            values={values}
+            data={data}
           />
         );
         case 2:
@@ -170,7 +174,7 @@ export class StepsCadastro extends Component {
             <FormDadosPessoa
               nextStep={this.nextStep}
               handleChange={this.handleChange}
-              values={values}
+              data={data}
             />
           );
       case 3:
@@ -179,7 +183,7 @@ export class StepsCadastro extends Component {
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             handleChange={this.handleChange}
-            values={values}
+            data={data}
           />
         );
       case 4:
@@ -187,7 +191,7 @@ export class StepsCadastro extends Component {
           <Confirmar
             nextStep={this.nextStep}
             prevStep={this.prevStep}
-            values={values}
+            data={data}
           />
         );
       case 5:
