@@ -3,19 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import ApiService from "../service/ApiService";
 
 class Home extends Component{   
 
-  componentWillUnmount() {
-        
-    let estados = [ {Sigla: 'SP', Nome: 'São Paulo'}, 
-    {Sigla: 'PR', Nome: 'Paraná'}, 
-    {Sigla: 'RJ', Nome: 'Rio de Janeiro'},
-    {Sigla: 'SC', Nome: 'Santa Catarina'}];
-    ApiService.addEstados(estados);
-}
- 
 render()
 {
 

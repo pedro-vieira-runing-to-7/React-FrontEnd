@@ -86,8 +86,6 @@ export class StepsCadastro extends Component {
 }
 
 
-/////////////////////////////////////////////////////////////////////////////////
-  // Proceed to next step
   nextStep = () => {
     const { step } = this.state;
     this.setState({
@@ -95,7 +93,6 @@ export class StepsCadastro extends Component {
     });
   };
 
-  // Go back to prev step
   prevStep = () => {
     const { step } = this.state;
     this.setState({
@@ -103,7 +100,6 @@ export class StepsCadastro extends Component {
     });
   };
 
-  // Handle fields change
   handleChange = input => e => {
     const { data } = this.state;
     data[e.target.name] = e.target.value;
@@ -112,54 +108,6 @@ export class StepsCadastro extends Component {
 
   render() {
     const { step, data } = this.state;
-    
-   /* const { Id,
-            IdStatus,
-            IdTipoPessoa,
-            Nome,
-            NomeSocial,
-            CpfCnpj,
-            RgIe,
-            DataNascimentoAbertura,
-            Sexo,
-            Email,
-            NumeroTelefoneFixo,
-            NumeroCelular,
-            EnderecoId,
-            EnderecoIdStatus,
-            EnderecoIdTipoEndereco,
-            EnderecoLogradouro,
-            EnderecoNumero,
-            EnderecoBairro,
-            EnderecoCidade,
-            EnderecoCep,
-            EnderecoIdEstado,
-            EnderecoNomeEstado } = this.state;
-    const values = { 
-                      Id,
-                      IdStatus,
-                      IdTipoPessoa,
-                      Nome,
-                      NomeSocial,
-                      CpfCnpj,
-                      RgIe,
-                      DataNascimentoAbertura,
-                      Sexo,
-                      Email,
-                      NumeroTelefoneFixo,
-                      NumeroCelular,
-                      EnderecoId,
-                      EnderecoIdStatus,
-                      EnderecoIdTipoEndereco,
-                      EnderecoLogradouro,
-                      EnderecoNumero,
-                      EnderecoBairro,
-                      EnderecoCidade,
-                      EnderecoCep,
-                      EnderecoIdEstado,
-                      EnderecoNomeEstado 
-                 }; */
-
     switch (step) {
       case 1:
         return (
@@ -196,6 +144,14 @@ export class StepsCadastro extends Component {
         );
       case 5:
         return <Successo />;
+      default:
+          return (
+            <FormSart
+              nextStep={this.nextStep}
+              handleChange={this.handleChange}
+              data={data}
+            />
+          );
     }
   }
 }

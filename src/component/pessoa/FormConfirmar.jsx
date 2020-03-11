@@ -83,7 +83,6 @@ export class Confirmar extends Component {
             });
     }
 
-    // PROCESS FORM //
     this.props.nextStep();
   };
 

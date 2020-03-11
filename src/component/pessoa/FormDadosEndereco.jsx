@@ -9,7 +9,6 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 class EnderecoComponent extends Component{   
 
-
     constructor(props){
         super(props);
         this.state ={

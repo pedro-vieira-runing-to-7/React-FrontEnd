@@ -5,8 +5,6 @@ import AppRouter from "./component/RouterComponent";
 import NavBar from "./component/Navbar";
 import Container from '@material-ui/core/Container';
 
-
-
 class App extends Component {
 
     render() {
@@ -29,6 +27,5 @@ class App extends Component {
         ApiService.addEstados(estados);
     }
 }
-
 
 export default App;
