@@ -64,8 +64,6 @@ handleSubmit = () => {
            lstStatus: [].concat(statusAPI),
            lstTipoPessoa: [].concat(tipoPessoaAPI),
          });
-
-         ValidatorForm.addValidationRule('isTruthy', value => value);
    }
  
     
