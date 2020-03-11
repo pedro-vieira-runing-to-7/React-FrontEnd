@@ -66,7 +66,6 @@ handleSubmit = () => {
          });
    }
  
-    
    
     render() {
 
@@ -118,7 +117,7 @@ handleSubmit = () => {
                     <Grid item xs={12} sm={1}></Grid>
        
                     <Grid item xs={12} sm={3}>
-                    <FormControl component="fieldset" fullWidth >
+                    <FormControl component="fieldset" disabled={data.DesabilitaOpcao}>
                       <FormLabel component="legend">Gênero</FormLabel>
                       <RadioGroup 
                       aria-label="position"   
@@ -128,6 +127,7 @@ handleSubmit = () => {
                       
                         <FormControlLabel
                           value="M"
+                          fullWidth
                           control={<Radio color="primary" />}
                           label="Masculino"
                           labelPlacement="start"
@@ -212,7 +212,6 @@ handleSubmit = () => {
                     validatorListener={this.validatorListener}
                     />
                     </Grid>
-
                   
                     <Grid  item xs={12} sm={2}>
                     <FormLabel component="legend">Fone Fixo</FormLabel>
@@ -300,10 +299,6 @@ handleSubmit = () => {
                   </Button>
 
               </ValidatorForm>
-
-
-       
-
 
             </Grid>
     </React.Fragment>

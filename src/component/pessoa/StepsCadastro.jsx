@@ -19,7 +19,7 @@ export class StepsCadastro extends Component {
             CpfCnpj: '',
             RgIe: '',
             DataNascimentoAbertura: "2020-03-02",
-            Sexo: '',
+            Sexo: 'M',
             Email: '',
             NumeroTelefoneFixo: '',
             NumeroCelular: '',
@@ -32,7 +32,8 @@ export class StepsCadastro extends Component {
             EnderecoCidade: '',
             EnderecoCep: '',
             EnderecoIdEstado: '',
-            EnderecoNomeEstado: ''
+            EnderecoNomeEstado: '',
+            DesabilitaOpcao: ''
          }
        
         }
@@ -78,7 +79,8 @@ export class StepsCadastro extends Component {
                 EnderecoCidade: pessoa.endereco[0].cidade,
                 EnderecoCep: pessoa.endereco[0].cep,
                 EnderecoIdEstado: pessoa.endereco[0].idEstado,      
-                EnderecoNomeEstado: ''
+                EnderecoNomeEstado: '',
+                DesabilitaOpcao: pessoa.idTipoPessoa === 1 ? 'disabled' : ''
             }
           })
         });
@@ -103,6 +105,18 @@ export class StepsCadastro extends Component {
   handleChange = input => e => {
     const { data } = this.state;
     data[e.target.name] = e.target.value;
+
+    if (e.target.name === "IdTipoPessoa" && parseInt(e.target.value) === 1 )
+    {
+        data.Sexo = '';
+        data.DesabilitaOpcao = 'disabled';        
+    }
+    else 
+    {
+      data.Sexo = 'M';
+      data.DesabilitaOpcao = '';    
+    }
+
     this.setState({ data });
   };
 
