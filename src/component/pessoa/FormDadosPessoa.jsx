@@ -84,7 +84,24 @@ handleSubmit = () => {
                 instantValidate
             >
                
-                    <Grid   item xs={12} sm={3}>
+               <Grid item xs={12} sm={2}>
+                    <FormLabel component="legend">Tipo Pessoa</FormLabel>  
+                    <TextValidator fullWidth  margin="normal" 
+                        id="IdTipoPessoa"
+                        name="IdTipoPessoa"
+                        select
+                        onChange={handleChange()}
+                        value={data.IdTipoPessoa}                       
+                        >
+                        {this.state.lstTipoPessoa.map(dado => (
+                                        <MenuItem  key={dado.value} value={dado.value}> {dado.display}</MenuItem>
+                                        ))}
+                    </TextValidator>
+                    </Grid>
+
+                    <Grid item xs={12} sm={1}></Grid>
+
+                    <Grid   item xs={12} sm={4}>
                     <FormLabel component="legend">Nome</FormLabel>
                      <TextValidator 
                      type="text" 
@@ -98,12 +115,14 @@ handleSubmit = () => {
                      validatorListener={this.validatorListener}
                      />
                     </Grid>
+
                     <Grid item xs={12} sm={1}></Grid>
+
                     <Grid  item xs={12} sm={3}>
-                    <FormLabel component="legend">Nome Social</FormLabel>
+                    <FormLabel component="legend">{data.InfoPessoa.DescNomeSocial} </FormLabel>
                     <TextValidator 
                     type="text" 
-                    placeholder="Nome Social" 
+                    placeholder={data.InfoPessoa.DescNomeSocial} 
                     fullWidth 
                     margin="normal" 
                     name="NomeSocial" 
@@ -117,7 +136,7 @@ handleSubmit = () => {
                     <Grid item xs={12} sm={1}></Grid>
        
                     <Grid item xs={12} sm={3}>
-                    <FormControl component="fieldset" disabled={data.DesabilitaOpcao}>
+                    <FormControl component="fieldset" disabled={data.InfoPessoa.HabilitaOpcao}>
                       <FormLabel component="legend">Gênero</FormLabel>
                       <RadioGroup 
                       aria-label="position"   
@@ -143,28 +162,14 @@ handleSubmit = () => {
                     </FormControl>
                     </Grid>
 
-                    <Grid item xs={12} sm={2}>
-                    <FormLabel component="legend">Tipo Pessoa</FormLabel>  
-                    <TextValidator fullWidth  margin="normal" 
-                        id="IdTipoPessoa"
-                        name="IdTipoPessoa"
-                        select
-                        onChange={handleChange()}
-                        value={data.IdTipoPessoa}                       
-                        >
-                        {this.state.lstTipoPessoa.map(dado => (
-                                        <MenuItem  key={dado.value} value={dado.value}> {dado.display}</MenuItem>
-                                        ))}
-                    </TextValidator>
-                    </Grid>
+                   
 
-                    <Grid item xs={12} sm={1}></Grid>
 
                     <Grid item xs={12} sm={2}>
-                    <FormLabel component="legend">Cpf / Cnpj</FormLabel>                   
+                    <FormLabel component="legend">{data.InfoPessoa.DescDoc1}</FormLabel>                   
                     <TextValidator 
                     type="text" 
-                    placeholder="Cpf / Cnpj" 
+                    placeholder={data.InfoPessoa.DescDoc1}
                     fullWidth  
                     margin="normal" 
                     name="CpfCnpj"
@@ -179,10 +184,10 @@ handleSubmit = () => {
                     <Grid item xs={12} sm={1}></Grid>
                    
                     <Grid item xs={12} sm={2}>
-                    <FormLabel component="legend">Rg / Ie</FormLabel>
+                    <FormLabel component="legend">{data.InfoPessoa.DescDoc2}</FormLabel>
                     <TextValidator 
                     type="text"
-                    placeholder="Rg / Ie" 
+                    placeholder={data.InfoPessoa.DescDoc2}
                     fullWidth  
                     margin="normal"  
                     name="RgIe"
@@ -197,9 +202,9 @@ handleSubmit = () => {
                     <Grid item xs={12} sm={1}></Grid>
 
                     <Grid item xs={12} sm={2}>
-                    <FormLabel component="legend">Data Nascimento/ Abertura</FormLabel>  
+                    <FormLabel component="legend">Data {data.InfoPessoa.DescData}</FormLabel>  
                     <TextValidator 
-                    placeholder="DataNascimentoAbertura"
+                    placeholder={data.InfoPessoa.DescData}
                     fullWidth  
                     margin="normal"
                     id="DataNascimentoAbertura"

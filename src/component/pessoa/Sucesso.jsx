@@ -27,7 +27,7 @@ export class Success extends Component {
             fullWidth="true"
           >
             <AppBar title="Successo" />
-            <h1> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;Dados Salvos com sucesso</h1>
+            <h1> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;Dados salvos com sucesso</h1>
             <p> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;Verifique na página de consulta</p>
           <Button variant="contained" color="default" formNoValidate  onClick={eve => window.location.href='/consulta-pessoas'}> OK </Button>
 

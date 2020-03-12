@@ -33,7 +33,14 @@ export class StepsCadastro extends Component {
             EnderecoCep: '',
             EnderecoIdEstado: '',
             EnderecoNomeEstado: '',
-            DesabilitaOpcao: ''
+            InfoPessoa:
+            {
+              HabilitaOpcao: '',
+              DescNomeSocial: 'Apelido',
+              DescDoc1: 'CPF',
+              DescDoc2: 'RG',
+              DescData: 'Nascimmento'
+            } 
          }
        
         }
@@ -80,7 +87,14 @@ export class StepsCadastro extends Component {
                 EnderecoCep: pessoa.endereco[0].cep,
                 EnderecoIdEstado: pessoa.endereco[0].idEstado,      
                 EnderecoNomeEstado: '',
-                DesabilitaOpcao: pessoa.idTipoPessoa === 1 ? 'disabled' : ''
+                InfoPessoa:
+                {
+                  DescNomeSocial: pessoa.idTipoPessoa === 1 ? 'Razão Social' : 'Apelido',
+                  HabilitaOpcao: pessoa.idTipoPessoa === 1 ? 'disabled' : '',
+                  DescDoc1: pessoa.idTipoPessoa === 1 ? 'CNPJ' : 'CPF',
+                  DescDoc2: pessoa.idTipoPessoa === 1 ? 'IE' : 'RG',
+                  DescData: pessoa.idTipoPessoa === 1 ? 'Abertura' : 'Nascimento',
+                } 
             }
           })
         });
@@ -106,15 +120,29 @@ export class StepsCadastro extends Component {
     const { data } = this.state;
     data[e.target.name] = e.target.value;
 
-    if (e.target.name === "IdTipoPessoa" && parseInt(e.target.value) === 1 )
+    if (e.target.name === "IdTipoPessoa" && e.target.value === 1 )
     {
-        data.Sexo = '';
-        data.DesabilitaOpcao = 'disabled';        
+      data.Sexo = '';
+      data.InfoPessoa =
+      {
+        DescNomeSocial: 'Razão Social',
+        HabilitaOpcao: 'disabled' ,
+        DescDoc1: 'CNPJ',
+        DescDoc2: 'IE',
+        DescData:  'Abertura',
+      } 
     }
-    else 
+    else  if (e.target.name === "IdTipoPessoa" && e.target.value === 0 )
     {
       data.Sexo = 'M';
-      data.DesabilitaOpcao = '';    
+      data.InfoPessoa =
+      {
+        DescNomeSocial: 'Apelido',
+        HabilitaOpcao: '',
+        DescDoc1: 'CPF',
+        DescDoc2: 'RG',
+        DescData: 'Nascimento'
+      } 
     }
 
     this.setState({ data });
