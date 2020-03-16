@@ -11,6 +11,7 @@ import Grid from '@material-ui/core/Grid';
 import ApiService from "../../service/ApiService";
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import 'date-fns';
+import { ptBR } from "date-fns/locale";
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider,
   KeyboardDatePicker,
@@ -213,7 +214,7 @@ handleSubmit = () => {
 
                     <Grid item xs={12} sm={1}></Grid>
 
-                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <MuiPickersUtilsProvider locale={ptBR} utils={DateFnsUtils}>
 
                     <Grid item xs={12} sm={2}>
                     <FormLabel component="legend">{data.InfoPessoa.DescData}</FormLabel>  
