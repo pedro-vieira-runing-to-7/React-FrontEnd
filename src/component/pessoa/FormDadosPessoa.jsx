@@ -53,7 +53,7 @@ handleSubmit = () => {
 
     handleDateChange = date => {
       this.setState({ selectedDate: date });
-      this.props.data.DataNascimentoAbertura = date;
+      this.props.data.DataNascimentoAbertura = date.toJSON();
     };
     
 
@@ -220,6 +220,7 @@ handleSubmit = () => {
                     <FormLabel component="legend">{data.InfoPessoa.DescData}</FormLabel>  
                     
                     <KeyboardDatePicker
+                              autoOk="true"
                               disableToolbar
                               variant="inline"
                               format="dd/MM/yyyy"
@@ -233,7 +234,6 @@ handleSubmit = () => {
                                 'aria-label': 'change date',
                               }}
                     />
-
                     </Grid>
                     </MuiPickersUtilsProvider>
                   

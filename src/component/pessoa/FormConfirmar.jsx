@@ -4,6 +4,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { List, ListItem, ListItemText } from '@material-ui/core/';
 import Grid from '@material-ui/core/Grid';
+import Moment from 'react-moment';
+import FormLabel from '@material-ui/core/FormLabel';
 
 export class Confirmar extends Component {
 
@@ -115,16 +117,19 @@ export class Confirmar extends Component {
               <ListItemText  primary="Nome" secondary={data.Nome} /> 
             </ListItem>
             <ListItem>
-              <ListItemText  primary="Nome Social" secondary={data.NomeSocial} /> 
+              <ListItemText  primary={data.InfoPessoa.DescNomeSocial} secondary={data.NomeSocial} /> 
             </ListItem>
             <ListItem>
-              <ListItemText  primary="CPF/CNPJ" secondary={data.CpfCnpj} /> 
+              <ListItemText  primary={data.InfoPessoa.DescDoc1} secondary={data.CpfCnpj} /> 
             </ListItem>
             <ListItem>
-              <ListItemText  primary="RG/IE" secondary={data.RgIe} /> 
+              <ListItemText  primary={data.InfoPessoa.DescDoc2} secondary={data.RgIe} /> 
             </ListItem>
             <ListItem>
-              <ListItemText  primary="Nascimento/Abertura" secondary={data.DataNascimentoAbertura} /> 
+            <FormLabel component="legend">{data.InfoPessoa.DescData}:</FormLabel>  
+              &nbsp;&nbsp;<Moment format="DD/MM/YYYY"  withTitle >
+               {data.DataNascimentoAbertura}
+            </Moment>
             </ListItem>
             <ListItem>
               <ListItemText  primary="Sexo" secondary={data.Sexo} /> 
