@@ -10,6 +10,11 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import ApiService from "../../service/ApiService";
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
+import { MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
 
 class PessoaComponent extends Component{   
   
@@ -32,7 +37,6 @@ handleSubmit = () => {
     });
 }
 
-
     constructor(props){
         super(props);  
         this.state = {
@@ -42,20 +46,28 @@ handleSubmit = () => {
           tipoPessoa: '',
           lstStatus: [],
           lstTipoPessoa: [],
+          selectedDate: new Date(),
       }
     }
+
+    handleDateChange = date => {
+      this.setState({ selectedDate: date });
+      this.props.data.DataNascimentoAbertura = date;
+    };
+    
 
       
     componentWillMount() {
 
       const status = ApiService.getStatus();
-       const tipoPessoa = ApiService.getTipoPessoa();
+      const tipoPessoa = ApiService.getTipoPessoa();
  
-       this.setState({  status, tipoPessoa  })
+       this.setState({status, tipoPessoa  })
    
          let statusAPI = status.map(st => {
            return { value: st.id, display: st.nome };
          });
+
          let tipoPessoaAPI = tipoPessoa.map(tipo => {
            return { value: tipo.id, display: tipo.nome };
          });
@@ -201,22 +213,28 @@ handleSubmit = () => {
 
                     <Grid item xs={12} sm={1}></Grid>
 
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+
                     <Grid item xs={12} sm={2}>
-                    <FormLabel component="legend">Data {data.InfoPessoa.DescData}</FormLabel>  
-                    <TextValidator 
-                    placeholder={data.InfoPessoa.DescData}
-                    fullWidth  
-                    margin="normal"
-                    id="DataNascimentoAbertura"
-                    name="DataNascimentoAbertura"
-                    type="date"
-                    onChange={handleChange()}
-                    value={data.DataNascimentoAbertura}
-                    validators={['required']}
-                    errorMessages={['* obrigatório']}
-                    validatorListener={this.validatorListener}
+                    <FormLabel component="legend">{data.InfoPessoa.DescData}</FormLabel>  
+                    
+                    <KeyboardDatePicker
+                              disableToolbar
+                              variant="inline"
+                              format="dd/MM/yyyy"
+                              margin="normal"
+                              id="DataNascimentoAbertura"
+                              name="DataNascimentoAbertura"
+                              label={data.InfoPessoa.DescData}
+                              value={data.DataNascimentoAbertura}
+                              onChange={this.handleDateChange}
+                              KeyboardButtonProps={{
+                                'aria-label': 'change date',
+                              }}
                     />
+
                     </Grid>
+                    </MuiPickersUtilsProvider>
                   
                     <Grid  item xs={12} sm={2}>
                     <FormLabel component="legend">Fone Fixo</FormLabel>

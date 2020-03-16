@@ -18,7 +18,7 @@ export class StepsCadastro extends Component {
             NomeSocial: '',
             CpfCnpj: '',
             RgIe: '',
-            DataNascimentoAbertura: "2020-03-02",
+            DataNascimentoAbertura: new Date(),
             Sexo: 'M',
             Email: '',
             NumeroTelefoneFixo: '',
@@ -39,7 +39,7 @@ export class StepsCadastro extends Component {
               DescNomeSocial: 'Apelido',
               DescDoc1: 'CPF',
               DescDoc2: 'RG',
-              DescData: 'Nascimmento'
+              DescData: 'Data Nascimmento'
             } 
          }
        
@@ -93,7 +93,7 @@ export class StepsCadastro extends Component {
                   HabilitaOpcao: pessoa.idTipoPessoa === 1 ? 'disabled' : '',
                   DescDoc1: pessoa.idTipoPessoa === 1 ? 'CNPJ' : 'CPF',
                   DescDoc2: pessoa.idTipoPessoa === 1 ? 'IE' : 'RG',
-                  DescData: pessoa.idTipoPessoa === 1 ? 'Abertura' : 'Nascimento',
+                  DescData: pessoa.idTipoPessoa === 1 ? 'Data Abertura' : 'Data Nascimento',
                 } 
             }
           })
@@ -129,7 +129,7 @@ export class StepsCadastro extends Component {
         HabilitaOpcao: 'disabled' ,
         DescDoc1: 'CNPJ',
         DescDoc2: 'IE',
-        DescData:  'Abertura',
+        DescData:  'Data Abertura',
       } 
     }
     else  if (e.target.name === "IdTipoPessoa" && e.target.value === 0 )
@@ -141,7 +141,7 @@ export class StepsCadastro extends Component {
         HabilitaOpcao: '',
         DescDoc1: 'CPF',
         DescDoc2: 'RG',
-        DescData: 'Nascimento'
+        DescData: 'Data Nascimento'
       } 
     }
 
