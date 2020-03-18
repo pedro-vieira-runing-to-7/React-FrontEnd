@@ -1,5 +1,5 @@
 ## APP REACT JS Consumindo API Restful via Axios
-## FSOLID - Cadastro de Pessoas 
+## FSOLID - Cadastro de Pessoas com Endereço
 Sistema de cadastro de Pessoas que possibilita as seguintes ações:
 Cadastro, edição, exclusão e atualização de um cadastro de pessoa com endereço.
 
