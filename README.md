@@ -1,5 +1,5 @@
 ## APP REACT JS Consumindo API Restful via Axios
-## SAGE - Cadastro de Pessoas 
+## FSOLID - Cadastro de Pessoas 
 Sistema de cadastro de Pessoas que possibilita as seguintes ações:
 Cadastro, edição, exclusão e atualização de um cadastro de pessoa com endereço.
 
@@ -11,7 +11,7 @@ Esta aplicação rodará no seguinte endereço: (http://localhost:3000) e depend
 portanto os dados só serão mantidos durante o ciclo de vida da aplicação.
 Poderá ser consultado os métodos via swagger neste endereço: (https://localhost:5001/swagger/index.html)
 
-## A dependência acima, diz respeito a aplicação a Sage_BackEnd
+## A dependência acima, diz respeito a aplicação a FSOLID_BackEnd
 
 ## Tecnologias:
 ### REACT JS
