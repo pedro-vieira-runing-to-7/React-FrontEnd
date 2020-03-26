@@ -29,7 +29,7 @@ render()
         </Typography>
 
         <Typography variant="h5" component="h2">
-         A dependência acima, diz respeito a aplicação Sage_BackEnd
+         A dependência acima, diz respeito a aplicação Net_Core_BackEnd
         </Typography>
       
       </CardContent>
